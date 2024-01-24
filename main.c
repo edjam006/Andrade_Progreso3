@@ -24,7 +24,7 @@ int main()
         switch (opc)
         {
         case 1:
-        archivo = fopen("Productos.txt", "w"); //Con la "w" creamos el archivo para poder escribir y leer al nuevo archivo de texto llamado Productos
+        archivo = fopen("Productos.txt", "a"); //Con la "w" creamos el archivo para poder escribir y leer al nuevo archivo de texto llamado Productos
         if (archivo!= NULL) //Revisamos si el archivo realmente existe
         {
             printf("Ingrese el codigo del producto\n"); //Solicitamos los datos y con la variable datos junto . con la variable de la estructura se almacena el dato en dicha variable
@@ -38,8 +38,9 @@ int main()
             printf("Ingrese el precio del producto\n");
             scanf("%f", &datos.precioCompra);
             fprintf(archivo, "%s %s %s %d %.2f\n", datos.codigo, datos.nombreProd, datos.descrProd, datos.cantidad, datos.precioCompra); //Con la funcion fprintf Imprimimos estos datos en el archivo de texto 
+            fclose(archivo); //Cerramos el archivo
         }
-        fclose(archivo); //Cerramos el archivo
+        
         break;
         case 2:
         archivo = fopen("Productos.txt", "r"); //Ahora abrimos el archivo pero con "r" solo para lectura 
